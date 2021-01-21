@@ -4,17 +4,26 @@ package:
   name: jupyter
   version: {{ version }}
 
+source:
+  url: https://pypi.io/packages/source/j/jupyter/jupyter-{{ version }}.tar.gz
+  sha256: d9dc4b3318f310e34c82951ea5d6683f67bed7def4b259fafbfe4f1beb1d8e5f
+
 build:
-  number: 2
-  noarch: python
+  number: 3
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
+  build:
+    - cross-python_{{ target_platform }}   # [build_platform != target_platform]
+    - python                               # [build_platform != target_platform]
+    - pip                                  # [build_platform != target_platform]
   host:
     - python
+    - pip
   run:
     - python
     - notebook
-    - qtconsole
+    - qtconsole         # [x86 or x86_64]
     - jupyter_console
     - nbconvert
     - ipykernel
