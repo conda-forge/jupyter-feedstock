@@ -20,14 +20,14 @@ requirements:
   host:
     - jupyter_core
     - pip
-    - python
+    - python >=3.6
   run:
     - ipykernel
     - ipywidgets
     - jupyter_console
     - nbconvert
     - notebook
-    - python
+    - python >=3.6
     - qtconsole-base
 
 test:
