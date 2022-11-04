@@ -28,7 +28,7 @@ requirements:
     - notebook
     - qtconsole         # [(x86 or x86_64) and python_impl == "cpython"]
     - jupyter_console
-    - nbconvert
+    - nbconvert-core
     - ipykernel
     - ipywidgets
 
