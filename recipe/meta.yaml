@@ -11,6 +11,9 @@ source:
 build:
   number: 8
   script: {{ PYTHON }} -m pip install . -vv
+  # there is not a build of pandoc for ppc64le, and this means we can't install
+  # nbconvert for ppc64le and python 3.11
+  skip: true  # [py>=311 and ppc64le]
 
 requirements:
   build:
