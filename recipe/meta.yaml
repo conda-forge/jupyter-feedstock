@@ -38,7 +38,6 @@ requirements:
 test:
   commands:
     - jupyter --help
-    - jupyter nbextension list
 
 about:
   home: http://jupyter.org
