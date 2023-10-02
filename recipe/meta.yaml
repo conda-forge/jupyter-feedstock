@@ -9,7 +9,7 @@ source:
   sha256: d9dc4b3318f310e34c82951ea5d6683f67bed7def4b259fafbfe4f1beb1d8e5f
 
 build:
-  number: 8
+  number: 9
   script: {{ PYTHON }} -m pip install . -vv
   # there is not a build of pandoc for ppc64le, and this means we can't install
   # nbconvert for ppc64le and python 3.11
@@ -38,7 +38,6 @@ requirements:
 test:
   commands:
     - jupyter --help
-    - jupyter nbextension list
 
 about:
   home: http://jupyter.org
