@@ -9,35 +9,34 @@ source:
   sha256: d9dc4b3318f310e34c82951ea5d6683f67bed7def4b259fafbfe4f1beb1d8e5f
 
 build:
-  number: 9
+  noarch: python
+  number: 10
   script: {{ PYTHON }} -m pip install . -vv
-  # there is not a build of pandoc for ppc64le, and this means we can't install
-  # nbconvert for ppc64le and python 3.11
-  skip: true  # [py>=311 and ppc64le]
 
 requirements:
-  build:
-    - python                                 # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}   # [build_platform != target_platform]
-    - python                               # [build_platform != target_platform]
-    - pip                                  # [build_platform != target_platform]
   host:
-    - python
-    - pip
     - jupyter_core
+    - pip
+    - python >=3.6
   run:
-    - python
-    - notebook
-    - qtconsole         # [(x86 or x86_64) and python_impl == "cpython"]
-    - jupyter_console
-    - nbconvert
     - ipykernel
     - ipywidgets
+    - jupyter_console
+    - nbconvert
+    - notebook
+    - python >=3.6
+    - qtconsole-base
 
 test:
+  requires:
+    - pip
   commands:
+    # check requirements
+    - python -m pip check
+    # check jupyter works
     - jupyter --help
+  imports:
+    - jupyter
 
 about:
   home: http://jupyter.org
