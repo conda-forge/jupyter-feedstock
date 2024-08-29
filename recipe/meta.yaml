@@ -1,4 +1,4 @@
-{% set version = "1.0.0" %}
+{% set version = "1.1.0" %}
 
 package:
   name: jupyter
@@ -6,26 +6,26 @@ package:
 
 source:
   url: https://pypi.io/packages/source/j/jupyter/jupyter-{{ version }}.tar.gz
-  sha256: d9dc4b3318f310e34c82951ea5d6683f67bed7def4b259fafbfe4f1beb1d8e5f
+  sha256: f5f32929a72a1eb91b39898b94911cb49ec8a68b9aab37e184af3f918bf56440
 
 build:
   noarch: python
-  number: 10
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - jupyter_core
     - pip
+    - setuptools
     - python >=3.6
   run:
     - ipykernel
     - ipywidgets
     - jupyter_console
+    - jupyterlab
     - nbconvert
     - notebook
     - python >=3.6
-    - qtconsole-base
 
 test:
   requires:
@@ -39,7 +39,7 @@ test:
     - jupyter
 
 about:
-  home: http://jupyter.org
+  home: https://jupyter.org
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
