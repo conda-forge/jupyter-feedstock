@@ -23,7 +23,7 @@ requirements:
     - ipywidgets
     - jupyter_console
     - jupyterlab
-    - nbconvert
+    - nbconvert-core
     - notebook
     - python >=3.6
 
